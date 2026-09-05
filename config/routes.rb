@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resource :session
+  resource :session, only: %i[ create destroy ]
+  get "login", to: "sessions#new"
   resources :passwords, param: :token
   root to: "homes#top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

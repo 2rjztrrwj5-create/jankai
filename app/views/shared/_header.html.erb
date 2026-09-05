@@ -3,7 +3,11 @@
     <%= link_to "雀会", root_path, class: "fw-bold fs-1 text-decoration-none text-dark" %>
   </div>
   <nav>
-    <%= link_to "新規登録", "#", class: "btn btn-secondary" %>
-    <%= link_to "ログイン", "#", class: "btn btn-success" %>
+    <% if authenticated? %>
+      <%= button_to "ログアウト", session_path, method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <%= link_to "新規登録", signup_path, class: "btn btn-secondary" %>
+      <%= link_to "ログイン", login_path, class: "btn btn-success" %>
+    <% end %>
   </nav>
 </header>
