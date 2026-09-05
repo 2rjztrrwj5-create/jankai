@@ -1,4 +1,11 @@
 <%= form_with model: @user, url: signup_path do |f| %>
+  <% if @user.errors.any? %>
+    <div>
+      <% @user.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :email_address %>
