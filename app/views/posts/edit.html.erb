@@ -1,0 +1,29 @@
+<%= form_with model: @post do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :event_at %>
+    <%= f.datetime_field :event_at %>
+  </div>
+
+  <div class="field">
+    <%= f.label :capacity %>
+    <%= f.text_field :capacity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :format %>
+    <%= f.select :format, Post.formats.keys %>
+  </div>
+
+  <%= f.submit "編集" %>
+
+<% end %>
