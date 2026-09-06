@@ -21,11 +21,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Current.user.posts.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Current.user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to @post
     else
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Current.user.posts.find(params[:id])
     @post.destroy
     redirect_to posts_path
   end
@@ -43,4 +43,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :event_at, :capacity, :format)
   end
+
 end
