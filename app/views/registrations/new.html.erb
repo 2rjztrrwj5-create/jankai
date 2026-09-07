@@ -1,18 +1,39 @@
-<%= form_with model: @user, url: signup_path do |f| %>
-  <% if @user.errors.any? %>
-    <div>
-      <% @user.errors.full_messages.each do |message| %>
-        <p><%= message %></p>
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+  <div class="row justify-content-center w-100">
+    <div class="col-md-6">
+      <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-4 d-inline-block fs-4">新規登録</h2>
+
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger">
+          <% @user.errors.full_messages.each do |message| %>
+            <p class="mb-0"><%= message %></p>
+          <% end %>
+        </div>
+      <% end %>
+
+      <%= form_with model: @user, url: signup_path do |f| %>
+        <div class="mb-3">
+          <%= f.label :name, "ニックネーム", class: "form-label fw-bold" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :email_address, "メールアドレス", class: "form-label fw-bold" %>
+          <%= f.email_field :email_address, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password, "パスワード(6文字以上)", class: "form-label fw-bold" %>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.label :password_confirmation, "パスワード(確認用)", class: "form-label fw-bold" %>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+
+        <%= f.submit "新規登録", class: "btn btn-primary w-100" %>
       <% end %>
     </div>
-  <% end %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email_address %>
-  <%= f.email_field :email_address %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "新規登録" %>
-<% end %>
+  </div>
+</div>

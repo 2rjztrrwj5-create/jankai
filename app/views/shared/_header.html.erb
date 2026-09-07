@@ -1,14 +1,16 @@
-<header class="container position-relative d-flex justify-content-end align-items-center p-3">
-  <div class="position-absolute start-50 translate-middle-x">
-    <%= link_to "雀会", root_path, class: "fw-bold fs-1 text-decoration-none text-dark" %>
+<header class="border-bottom py-5" style="background-color: #E8F5E9;">
+  <div class="container position-relative d-flex justify-content-end align-items-center">
+    <div class="position-absolute start-50 translate-middle-x">
+      <%= link_to "雀会", root_path, class: "fw-bold text-decoration-none", style: "color: #2D6A4F; font-size: 5rem; font-family: 'Yuji Syuku', serif;" %>
+    </div>
+    <nav>
+      <% if authenticated? %>
+        <%= button_to "ログアウト", session_path, method: :delete, class: "btn btn-danger outline" %>
+        <%= link_to "マイページ", mypage_path, class: "btn btn-primary outline" %>
+      <% else %>
+        <%= link_to "新規登録", signup_path, class: "btn btn-secondary outline" %>
+        <%= link_to "ログイン", login_path, class: "btn btn-success " %>
+      <% end %>
+    </nav>
   </div>
-  <nav>
-    <% if authenticated? %>
-      <%= button_to "ログアウト", session_path, method: :delete, class: "btn btn-danger" %>
-      <%= link_to "マイページ", mypage_path, class: "btn btn-primary" %>
-    <% else %>
-      <%= link_to "新規登録", signup_path, class: "btn btn-secondary" %>
-      <%= link_to "ログイン", login_path, class: "btn btn-success" %>
-    <% end %>
-  </nav>
 </header>
