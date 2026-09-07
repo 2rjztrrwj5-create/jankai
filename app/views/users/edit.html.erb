@@ -1,0 +1,8 @@
+<%= form_with model: @user, url: users_edit_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email_address %>
+  <%= f.email_field :email_address %>
+  <%= f.submit "更新" %>
+<% end %>
+<%= button_to "退会", users_path, method: :delete, data: { turbo_confirm: "本当に退会しますか？" } %>
