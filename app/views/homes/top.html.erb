@@ -1,7 +1,11 @@
-<div class="container text-center">
-  <h1 class="text-center my-5">雀会へようこそ</h1>
-  <p>雀会は、麻雀を楽しめる環境を提供しています。初心者から上級者まで、誰でも楽しめる環境を提供しています。雀会に参加して、新しい友達と一緒に麻雀を楽しみましょう！</p>
-
-  <h2 class="text-center my-5">雀会の概要</h2>
-  <p>雀会は、麻雀を始めてみたい方や、麻雀を通じて色々な方と交流したい方のためのコミュニティです。初心者から上級者、オンライン対戦や雀荘での対戦など、さまざまな形で麻雀を楽しむことができます。</p>
+<div class="container text-center py-5">
+  <p class="fs-4 text-muted mb-4">麻雀好きが集まる、新しいコミュニティ</p>
+  <p class="text-center fs-5 text-muted">
+    麻雀を一緒に打つ仲間を見つけよう。初心者から上級者まで、誰でも参加できます。
+  </p>
+  <% if authenticated? %>
+    <%= link_to "投稿一覧を見る", posts_path, class: "btn btn-primary btn-lg" %>
+  <% else %>
+    <%= link_to "無料で始める", signup_path, class: "btn btn-primary btn-lg" %>
+  <% end %>
 </div>
