@@ -1,10 +1,40 @@
-<%= @post.title %>
-<%= @post.body %>
-<%= @post.event_at %>
-<%= @post.capacity %>
-<%= @post.format %>
-<%= @post.prefecture %>
-<% if @post.user == Current.user %>
-  <%= link_to "編集", edit_post_path(@post) %>
-  <%= button_to "削除", post_path(@post), method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
-<% end %>
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-2 mt-3 mb-4 d-inline-block fs-4">投稿詳細</h2>
+  <%= link_to "投稿一覧に戻る", posts_path %>
+  <table class="table table-bordered mt-3">
+    <tbody>
+      <tr>
+        <th class="bg-light">タイトル</th>
+        <td><%= @post.title %></td>
+      </tr>
+      <tr>
+        <th class="bg-light">本文</th>
+        <td><%= @post.body %></td>
+      </tr>
+      <tr>
+        <th class="bg-light">開催日時</th>
+        <td><%= @post.event_at.strftime("%Y年%m月%d日 %H:%M") %></td>
+      </tr>
+      <tr>
+        <th class="bg-light">定員</th>
+        <td><%= @post.capacity %></td>
+      </tr>
+      <tr>
+        <th class="bg-light">形式</th>
+        <td><%= @post.format == "offline" ? "対面" : "オンライン" %></td>
+      </tr>
+      <tr>
+        <th class="bg-light">都道府県</th>
+        <td><%= @post.prefecture %></td>
+      </tr>
+      <tr>
+        <th class="bg-light">投稿者</th>
+        <td><%= @post.user.name %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% if @post.user == Current.user %>
+      <%= link_to "編集", edit_post_path(@post) %>
+      <%= button_to "削除", post_path(@post), method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
+  <% end %>
+</div>
