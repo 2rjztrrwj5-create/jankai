@@ -1,7 +1,6 @@
 class HomesController < ApplicationController
-  def top
-  end
+  allow_unauthenticated_access only: %i[ top ]
 
-  def about
+  def top
   end
 end
