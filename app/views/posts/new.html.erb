@@ -1,34 +1,38 @@
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-2 mt-3 mb-4 d-inline-block fs-4">新規投稿</h2>
+  <%= link_to "投稿一覧に戻る", posts_path %> 
 <%= form_with model: @post do |f| %>
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="mb-3">
+    <%= f.label :title, "タイトル", class: "form-label fw-bold" %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_field :body %>
+  <div class="mb-3">
+    <%= f.label :body, "本文", class: "form-label fw-bold" %>
+    <%= f.text_field :body, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :event_at %>
-    <%= f.datetime_field :event_at %>
+  <div class="mb-3">
+    <%= f.label :event_at, "開催日時", class: "form-label fw-bold" %>
+    <%= f.datetime_field :event_at, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :capacity %>
-    <%= f.text_field :capacity %>
+  <div class="mb-3">
+    <%= f.label :capacity, "定員", class: "form-label fw-bold" %>
+    <%= f.text_field :capacity, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :format %>
-    <%= f.select :format, Post.formats.keys %>
+  <div class="mb-3">
+    <%= f.label :format, "形式", class: "form-label fw-bold" %>
+    <%= f.select :format, Post.formats.keys, {}, {class: "form-control"} %>
   </div>
 
-  <div class="field">
-    <%= f.label :prefecture %>
-    <%= f.text_field :prefecture %>
+  <div class="mb-3">
+    <%= f.label :prefecture, "都道府県", class: "form-label fw-bold" %>
+    <%= f.text_field :prefecture, class: "form-control" %>
   </div>
 
-  <%= f.submit "投稿" %>
+  <%= f.submit "投稿", class: "btn btn-primary" %>
 
 <% end %>
+</div>
