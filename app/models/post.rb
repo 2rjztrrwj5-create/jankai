@@ -4,5 +4,6 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :event_at, presence: true
   validates :capacity, presence: true
+  validates :prefecture, presence: true
   enum :format, { offline: 0, online: 1 }
 end

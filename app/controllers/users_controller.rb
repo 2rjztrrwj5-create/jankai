@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def mypage
     @posts = Current.user.posts
+    @user = Current.user
   end
 
   def edit

@@ -24,6 +24,11 @@
     <%= f.select :format, Post.formats.keys %>
   </div>
 
+  <div class="field">
+    <%= f.label :prefecture %>
+    <%= f.text_field :prefecture %>
+  </div>
+
   <%= f.submit "投稿" %>
 
 <% end %>
