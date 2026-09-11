@@ -3,13 +3,13 @@
     <div class="position-absolute start-50 translate-middle-x">
       <%= link_to "雀会", root_path, class: "fw-bold text-decoration-none", style: "color: #2D6A4F; font-size: 5rem; font-family: 'Yuji Syuku', serif;" %>
     </div>
-    <nav>
+    <nav class="d-flex gap-2 align-items-center">
       <% if authenticated? %>
-        <%= button_to "ログアウト", session_path, method: :delete, class: "btn btn-danger outline" %>
-        <%= link_to "マイページ", mypage_path, class: "btn btn-primary outline" %>
+        <%= link_to "マイページ", mypage_path, class: "btn btn-primary" %>
+        <%= button_to "ログアウト", session_path, method: :delete, class: "btn btn-danger" %>
       <% else %>
-        <%= link_to "新規登録", signup_path, class: "btn btn-secondary outline" %>
-        <%= link_to "ログイン", login_path, class: "btn btn-success " %>
+        <%= link_to "新規登録", signup_path, class: "btn btn-secondary" %>
+        <%= link_to "ログイン", login_path, class: "btn btn-success" %>
       <% end %>
     </nav>
   </div>
