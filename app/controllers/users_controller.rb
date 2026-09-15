@@ -9,10 +9,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    if Current.user.update(user_params)
+    @user = Current.user
+    if @user.update(user_params)
       redirect_to mypage_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
