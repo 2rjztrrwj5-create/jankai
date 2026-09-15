@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  allow_unauthenticated_access only: %i[ index ]
+  rescue_from ActiveRecord::RecordNotFound, with: :redirect_to_posts
   def new
     @post = Post.new
   end
@@ -42,6 +44,10 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :body, :event_at, :capacity, :format, :prefecture)
+  end
+
+  def redirect_to_posts
+    redirect_to posts_path, alert: "権限がありません。"
   end
 
 end
