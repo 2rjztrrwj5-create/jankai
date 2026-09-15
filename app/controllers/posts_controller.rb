@@ -29,14 +29,14 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @post = Current.user.posts.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to mypage_path
   end
 
   private

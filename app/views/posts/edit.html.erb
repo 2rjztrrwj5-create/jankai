@@ -1,7 +1,12 @@
 <div class="container">
   <h2 class="bg-body-secondary rounded-0 px-3 py-2 mt-3 mb-4 d-inline-block fs-4">投稿編集</h2>
-
-
+  <% if @post.errors.any? %>
+    <div class="alert alert-danger">
+      <% @post.errors.full_messages.each do |message| %>
+        <p class="mb-0"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
   <%= form_with model: @post do |f| %>
     <div class="mb-3">
       <%= f.label :title, "タイトル", class: "form-label fw-bold" %>
