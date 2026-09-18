@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   validates :capacity, presence: true
   validates :prefecture, presence: true
   enum :format, { offline: 0, online: 1 }
+  has_many :comments, dependent: :destroy
 end
