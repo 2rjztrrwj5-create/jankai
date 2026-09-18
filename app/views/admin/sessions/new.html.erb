@@ -1,0 +1,18 @@
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+  <div class="row justify-content-center w-100">
+    <div class="col-md-6">
+      <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-4 d-inline-block fs-4">管理者ログイン</h2>
+      <%= form_with url: admin_session_path do |f| %>
+        <div class="mb-3">
+          <%= f.label :email_address, "メールアドレス", class: "form-label fw-bold" %>
+          <%= f.email_field :email_address, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password, "パスワード", class: "form-label fw-bold" %>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+        <%= f.submit "ログイン", class: "btn btn-primary w-100" %>
+      <% end %>
+    </div>
+  </div>
+</div>
