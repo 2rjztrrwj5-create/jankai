@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   get "signup", to: "registrations#new"
   post "signup", to: "registrations#create"
 
-  resources :posts
-
+  resources :posts do
+    resources :comments, only: %i[ create ]
+  end
+  resources :comments, only: %i[ destroy ]
   get "mypage", to: "users#mypage"
   get "users/edit", to: "users#edit"
   patch "users/edit", to: "users#update"

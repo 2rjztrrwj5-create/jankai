@@ -40,4 +40,22 @@
       <%= link_to "投稿一覧に戻る", posts_path, class: "btn btn-secondary" %>
     </div>
   <% end %>
+  <h3 class="mt-5">コメント</h3>
+  <%= form_with model: [@post, Comment.new], url: post_comments_path(@post) do |f| %>
+    <div class="mb-3">
+      <%= f.text_area :body, class: "form-control", placeholder: "コメントを入力" %>
+    </div>
+    <%= f.submit "コメントする", class: "btn btn-primary" %>
+  <% end %>
+
+  <ul class="list-group mt-3">
+    <% @post.comments.each do |comment| %>
+      <li class="list-group-item">
+        <strong><%= comment.user.name %></strong>: <%= comment.body %>
+        <% if comment.user == Current.user %>
+          <%= button_to "削除", comment_path(comment), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </div>
