@@ -12,6 +12,16 @@ Rails.application.routes.draw do
     resources :comments, only: %i[ create ]
   end
   resources :comments, only: %i[ destroy ]
+
+  namespace :admin do
+    get "login", to: "sessions#new"
+    resource :session, only: %i[ create destroy ]
+    resources :users, only: %i[ index show ] do
+      member do
+        delete "withdraw"
+      end
+    end
+  end
   get "mypage", to: "users#mypage"
   get "users/edit", to: "users#edit"
   patch "users/edit", to: "users#update"

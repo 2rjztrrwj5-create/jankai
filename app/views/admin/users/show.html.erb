@@ -1,0 +1,17 @@
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-2 mt-3 mb-4 d-inline-block fs-4">ユーザー詳細</h2>
+  <table class="table table-bordered mt-3">
+    <tbody>
+      <tr>
+        <th class="bg-light">ニックネーム</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th class="bg-light">メールアドレス</th>
+        <td><%= @user.email_address %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= button_to "退会させる", withdraw_admin_user_path(@user), method: :delete, data: { turbo_confirm: "本当に退会させますか？" }, class: "btn btn-danger" %>
+  <%= link_to "ユーザー一覧に戻る", admin_users_path, class: "btn btn-secondary" %>
+</div>
