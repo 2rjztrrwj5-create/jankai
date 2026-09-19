@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
   end
   get "mypage", to: "users#mypage"
+  get "users/:id", to: "users#show", as: :user
   get "users/edit", to: "users#edit"
   patch "users/edit", to: "users#update"
   delete "users", to: "users#destroy"
