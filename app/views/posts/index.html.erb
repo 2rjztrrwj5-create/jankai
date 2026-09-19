@@ -6,7 +6,11 @@
       <li class="list-group-item">
         <%= link_to post.title, post_path(post) %>
         <span class="text-muted">
-          (<%= post.prefecture %> / <%= post.event_at.strftime("%Y年%m月%d日 %H:%M") %>)</span>
+          (<%= post.prefecture %> / <%= post.event_at.strftime("%Y年%m月%d日 %H:%M") %>)
+          <% if post.comments.count > 0 %>
+            / コメント<%= post.comments.count %>件
+          <% end %>
+        </span>
       </li>
     <% end %>
   </ul>
