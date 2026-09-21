@@ -1,0 +1,11 @@
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-2 mt-3 mb-4 d-inline-block fs-4">グループ一覧</h2>
+  <%= link_to "新規グループ作成", new_group_path, class: "btn btn-primary" %>
+  <ul class="list-group mt-3">
+    <% @groups.each do |group| %>
+      <li class="list-group-item">
+        <%= link_to group.name, group_path(group) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

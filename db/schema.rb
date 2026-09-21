@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_21_100010) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_21_102158) do
   create_table "admin_sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "admin_id", null: false
     t.datetime "created_at", null: false
@@ -23,6 +23,16 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_21_100010) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_applications_on_group_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -83,6 +93,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_21_100010) do
   end
 
   add_foreign_key "admin_sessions", "admins"
+  add_foreign_key "applications", "groups"
+  add_foreign_key "applications", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "group_members", "groups"
