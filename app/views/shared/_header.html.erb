@@ -8,6 +8,7 @@
         <%= link_to "マイページ", mypage_path, class: "btn btn-success text-nowrap" %>
         <%= link_to "新規投稿", new_post_path, class: "btn btn-primary text-nowrap" %>
         <%= link_to "投稿一覧", posts_path, class: "btn btn-primary text-nowrap" %>
+        <%= link_to "グループ", groups_path, class: "btn btn-outline-primary text-nowrap" %>
         <%= button_to "ログアウト", session_path, method: :delete, class: "btn btn-danger text-nowrap" %>
       <% else %>
         <%= link_to "新規登録", signup_path, class: "btn btn-secondary text-nowrap" %>
