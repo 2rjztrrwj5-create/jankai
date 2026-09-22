@@ -13,6 +13,14 @@ Rails.application.routes.draw do
   end
   resources :comments, only: %i[ destroy ]
 
+  resources :groups, only: %i[ index new create show ] do
+    resources :applications, only: %i[ create ]
+    member do
+      patch "approve/:user_id", to: "groups#approve", as: :approve
+      patch "reject/:user_id", to: "groups#reject", as: :reject
+    end
+  end
+
   namespace :admin do
     get "login", to: "sessions#new"
     resource :session, only: %i[ create destroy ]
