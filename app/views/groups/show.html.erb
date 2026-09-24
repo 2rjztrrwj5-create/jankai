@@ -1,32 +1,12 @@
 <div class="container">
   <h2 class="bg-body-secondary rounded-0 px-3 py-2 mt-3 mb-4 d-inline-block fs-4"><%= @group.name %></h2>
-  <p><%= @group.description %></p>
 
-  <% if @group.users.include?(Current.user) %>
-    <p class="text-success">あなたは、このグループの、メンバーです。</p>
+  <h3 class="mt-4">メンバー一覧</h3>
+  <ul class="list-group">
+    <% @group.users.each do |user| %>
+      <li class="list-group-item"><%= user.name %></li>
+    <% end %>
+  </ul>
 
-    <h3 class="mt-4">メンバー一覧</h3>
-    <ul class="list-group">
-      <% @group.users.each do |user| %>
-        <li class="list-group-item"><%= user.name %></li>
-      <% end %>
-    </ul>
-
-    <h3 class="mt-4">参加申請一覧</h3>
-    <ul class="list-group">
-      <% @applications.each do |application| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= application.user.name %>
-          <div>
-            <%= button_to "承認", approve_group_path(@group, user_id: application.user_id), method: :patch, class: "btn btn-sm btn-success" %>
-            <%= button_to "却下", reject_group_path(@group, user_id: application.user_id), method: :patch, class: "btn btn-sm btn-danger" %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <%= button_to "参加申請する", group_applications_path(@group), class: "btn btn-primary", data: { turbo: false } %>
-  <% end %>
-
-  <%= link_to "グループ一覧に戻る", groups_path, class: "btn btn-secondary mt-3" %>
+  <%= link_to "参加グループ一覧に戻る", groups_path, class: "btn btn-secondary mt-3" %>
 </div>

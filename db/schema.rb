@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_21_102158) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_22_104114) do
   create_table "admin_sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "admin_id", null: false
     t.datetime "created_at", null: false
@@ -27,11 +27,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_21_102158) do
 
   create_table "applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_applications_on_group_id"
+    t.bigint "post_id"
+    t.index ["post_id"], name: "index_applications_on_post_id"
     t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
@@ -93,7 +93,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_21_102158) do
   end
 
   add_foreign_key "admin_sessions", "admins"
-  add_foreign_key "applications", "groups"
+  add_foreign_key "applications", "posts"
   add_foreign_key "applications", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
