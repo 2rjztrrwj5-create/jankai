@@ -7,4 +7,6 @@ class Post < ApplicationRecord
   validates :prefecture, presence: true
   enum :format, { offline: 0, online: 1 }
   has_many :comments, dependent: :destroy
+  has_many :applications, dependent: :destroy
+  has_one :group, dependent: :destroy
 end

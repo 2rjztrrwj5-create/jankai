@@ -41,6 +41,30 @@ class PostsController < ApplicationController
     redirect_to mypage_path
   end
 
+  def approve
+    application = Application.find_by(post_id: params[:id], user_id: params[:user_id])
+    application.update(status: :approved)
+
+    post = application.post
+    approved_count = post.applications.approved.count
+
+    if approved_count >= post.capacity && post.group.nil?
+      group = post.create_group!(name: post.title)
+      post.applications.approved.each do |app|
+        group.group_members.create!(user: app.user)
+      end
+      group.group_members.create!(user: post.user)
+    end
+
+    redirect_to post_path(post), notice: "承認しました。"
+  end
+
+  def reject
+    application = Application.find_by(post_id: params[:id], user_id: params[:user_id])
+    application.update(status: :rejected)
+    redirect_to post_path(application.post), notice: "却下しました。"
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :body, :event_at, :capacity, :format, :prefecture)
@@ -49,5 +73,4 @@ class PostsController < ApplicationController
   def redirect_to_posts
     redirect_to posts_path, alert: "権限がありません。"
   end
-
 end
