@@ -6,6 +6,8 @@ ja:
         too_short: "は%{count}文字以上で入力してください"
         invalid: "は不正な値です"
         taken: "はすでに使用されています"
+        not_a_number: "は数値で入力してください"
+        greater_than_or_equal_to: "は%{count}以上の値にしてください"
     attributes:
       user:
         name: "ニックネーム"

@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :event_at, presence: true
-  validates :capacity, presence: true
+  validates :capacity, presence: true, numericality: { greater_than_or_equal_to: 1 }
   validates :prefecture, presence: true
   enum :format, { offline: 0, online: 1 }
   has_many :comments, dependent: :destroy
