@@ -10,16 +10,16 @@ ja:
         greater_than_or_equal_to: "は%{count}以上の値にしてください"
     attributes:
       user:
-        name: "ニックネーム"
+        name: "ユーザー名"
         email_address: "メールアドレス"
         password: "パスワード"
       post:
         title: "タイトル"
-        body: "本文"
+        body: "募集内容"
         event_at: "開催日時"
-        capacity: "定員"
+        capacity: "募集人数"
         format: "形式"
-        prefecture: "都道府県"
+        prefecture: "開催場所"
   errors:
     format: "%{attribute}%{message}"
     messages:

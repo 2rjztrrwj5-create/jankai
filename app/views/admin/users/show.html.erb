@@ -3,7 +3,7 @@
   <table class="table table-bordered mt-3">
     <tbody>
       <tr>
-        <th class="bg-light">ニックネーム</th>
+        <th class="bg-light">ユーザー名</th>
         <td><%= @user.name %></td>
       </tr>
       <tr>
@@ -13,5 +13,5 @@
     </tbody>
   </table>
   <%= button_to "退会させる", withdraw_admin_user_path(@user), method: :delete, data: { turbo_confirm: "本当に退会させますか？" }, class: "btn btn-danger" %>
-  <%= link_to "ユーザー一覧に戻る", admin_users_path, class: "btn btn-secondary" %>
+  <%= link_to "一覧に戻る", admin_users_path, class: "btn btn-secondary" %>
 </div>
