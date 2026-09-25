@@ -18,7 +18,7 @@ ja:
         body: "募集内容"
         event_at: "開催日時"
         capacity: "募集人数"
-        format: "形式"
+        format: "開催形式"
         prefecture: "開催場所"
   errors:
     format: "%{attribute}%{message}"
