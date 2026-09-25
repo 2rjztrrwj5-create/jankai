@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="bg-body-secondary rounded-0 px-3 py-2 mt-3 mb-4 d-inline-block fs-4">投稿編集</h2>
+  <h2 class="bg-body-secondary rounded-0 px-3 py-2 mt-3 mb-4 d-inline-block fs-4">編集</h2>
   <% if @post.errors.any? %>
     <div class="alert alert-danger">
       <% @post.errors.full_messages.each do |message| %>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="mb-3">
-      <%= f.label :body, "本文", class: "form-label fw-bold" %>
+      <%= f.label :body, "募集内容", class: "form-label fw-bold" %>
       <%= f.text_field :body, class: "form-control" %>
     </div>
 
@@ -24,22 +24,22 @@
     </div>
 
     <div class="mb-3">
-      <%= f.label :capacity, "定員", class: "form-label fw-bold" %>
+      <%= f.label :capacity, "募集人数", class: "form-label fw-bold" %>
       <%= f.text_field :capacity, class: "form-control" %>
     </div>
 
     <div class="mb-3">
       <%= f.label :format, "形式", class: "form-label fw-bold" %>
-      <%= f.select :format, Post.formats.keys, {}, {class: "form-control"} %>
+      <%= f.select :format, [["対面", "offline"], ["オンライン", "online"]], {}, {class: "form-control"} %>
     </div>
 
     <div class="mb-3">
-      <%= f.label :prefecture, "都道府県", class: "form-label fw-bold" %>
+      <%= f.label :prefecture, "開催場所", class: "form-label fw-bold" %>
       <%= f.text_field :prefecture, class: "form-control" %>
     </div>
     <div class="d-flex gap-2 align-items-center">
       <%= f.submit "編集", class: "btn btn-primary btn-lg" %>
-      <%= link_to "投稿一覧に戻る", posts_path, class: "btn btn-secondary" %>
+      <%= link_to "一覧に戻る", posts_path, class: "btn btn-secondary" %>
     </div>
 
   <% end %>

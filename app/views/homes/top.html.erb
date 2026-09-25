@@ -4,7 +4,7 @@
     麻雀を一緒に打つ仲間を見つけよう。初心者から上級者まで、誰でも参加できます。
   </p>
   <% if authenticated? %>
-    <%= link_to "投稿一覧を見る", posts_path, class: "btn btn-primary btn-lg" %>
+    <%= link_to "みんなの募集を見る", posts_path, class: "btn btn-primary btn-lg" %>
   <% else %>
     <%= link_to "無料で始める", signup_path, class: "btn btn-primary btn-lg" %>
   <% end %>
