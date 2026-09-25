@@ -27,7 +27,10 @@ Rails.application.routes.draw do
         delete "withdraw"
       end
     end
+    resources :groups, only: %i[ index destroy ]
+    resources :comments, only: %i[ index destroy ]
   end
+  
   get "mypage", to: "users#mypage"
   get "users/:id", to: "users#show", as: :user
   get "users/edit", to: "users#edit"
