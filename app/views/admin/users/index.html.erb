@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="d-flex gap-2 mb-3">
+    <%= link_to "グループ管理", admin_groups_path, class: "btn btn-outline-primary" %>
+    <%= link_to "コメント管理", admin_comments_path, class: "btn btn-outline-primary" %>
+  </div>
   <h2 class="bg-body-secondary rounded-0 px-3 py-2 mt-3 mb-4 d-inline-block fs-4">ユーザー一覧</h2>
   <ul class="list-group">
     <% @users.each do |user| %>
