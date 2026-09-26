@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   end
   resources :comments, only: %i[ destroy ]
 
-  resources :groups, only: %i[ index show ]
+  resources :groups, only: %i[ index show ] do
+    resources :comments, only: %i[ create ]
+  end
 
   namespace :admin do
     get "login", to: "sessions#new"

@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   validates :prefecture, presence: true, if: -> { format == "offline" }
   validates :prefecture, format: { without: /[a-zA-Z]/, message: "にはアルファベットを含めないでください" }
   enum :format, { offline: 0, online: 1 }
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :applications, dependent: :destroy
   has_one :group, dependent: :destroy
 end
