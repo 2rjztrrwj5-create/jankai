@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_22_104114) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_26_051227) do
   create_table "admin_sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "admin_id", null: false
     t.datetime "created_at", null: false
@@ -37,11 +37,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_22_104114) do
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
+    t.bigint "commentable_id", null: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.string "commentable_type"
+    t.index ["commentable_id"], name: "index_comments_on_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -59,6 +60,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_22_104114) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "post_id", null: false
+    t.index ["post_id"], name: "index_groups_on_post_id"
   end
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -95,7 +98,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_22_104114) do
   add_foreign_key "admin_sessions", "admins"
   add_foreign_key "applications", "posts"
   add_foreign_key "applications", "users"
-  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"

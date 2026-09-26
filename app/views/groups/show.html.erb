@@ -8,5 +8,26 @@
     <% end %>
   </ul>
 
+  <h3 class="mt-5">コメント</h3>
+  <%= form_with model: [@group, Comment.new], url: group_comments_path(@group) do |f| %>
+    <div class="mb-3">
+      <%= f.text_area :body, class: "form-control", placeholder: "コメントを入力" %>
+    </div>
+    <%= f.submit "コメントする", class: "btn btn-primary" %>
+  <% end %>
+
+  <ul class="list-group mt-3">
+    <% @group.comments.each do |comment| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong><%= comment.user.name %></strong>: <%= comment.body %>
+        </div>
+        <% if comment.user == Current.user %>
+          <%= button_to "削除", comment_path(comment), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
   <%= link_to "一覧に戻る", groups_path, class: "btn btn-secondary mt-3" %>
 </div>
